@@ -10,6 +10,9 @@ namespace tutorial
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("\x0041BCDE\a");
+
+            Console.ReadKey();
         }
     }
 }
