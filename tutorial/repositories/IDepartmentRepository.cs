@@ -10,5 +10,6 @@ namespace tutorial.repositories
     public interface IDepartmentRepository
     {
         List<department> GetAll();
+        string AddDepartment(department department);
     }
 }

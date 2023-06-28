@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tutorial.services;
+using tutorial.models;
 
 namespace tutorial
 {
@@ -32,6 +33,15 @@ namespace tutorial
                 Console.WriteLine($"ID: {dep.dept_no}");
                 Console.WriteLine($"Deparment name: {dep.dept_name} - Location: {dep.location}");
             }
+
+            Console.WriteLine("Insertar nuevo departamento");
+            department department = new department();
+            department.dept_no = Console.ReadLine();
+            department.dept_name = Console.ReadLine();
+            department.location = Console.ReadLine();
+
+            Console.WriteLine("Id departamento insertado: "+ departmentService.AddDepartment(department));
+
 
 
             Console.ReadKey();

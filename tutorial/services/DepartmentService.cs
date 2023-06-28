@@ -8,12 +8,33 @@ using System.Threading.Tasks;
 using tutorial.models;
 using tutorial.repositories;
 using tutorial.viewmodels;
+using System.Data.SqlTypes;
 
 namespace tutorial.services
 {
     public class DepartmentService : IDepartmentRepository
     {
         string connectionString = Connection.DbConnection("DESKTOP-11923P8", "companyV1", "sa", "93639", "");
+
+        public string AddDepartment(department department)
+        {
+            string id = string.Empty;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("InsertDepartment", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@dept_no", "b3");
+                command.Parameters.AddWithValue("@dept_name", "Contact");
+                command.Parameters.AddWithValue("@location", "LA");
+
+                connection.Open();
+                id = command.ExecuteScalar()?.ToString();
+                connection.Close();
+            }
+            return id;
+        }
+
         public List<department> GetAll()
         {
             List<department> departments = new List<department>();
