@@ -33,6 +33,7 @@ namespace tutorial
                 Console.WriteLine($"Deparment name: {dep.dept_name} - Location: {dep.location}");
             }
 
+
             Console.ReadKey();
         }
     }
